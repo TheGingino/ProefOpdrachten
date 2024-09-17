@@ -87,20 +87,46 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         //omdat ik niet wil dat je moet dubbel klikken
         if (isItemSelected)
         {
-            _inventoryManager.UseItem(itemName);
+            bool isUsable =  _inventoryManager.UseItem(itemName);
+            if (isUsable)
+            {
+                this.amount -= 1;
+                isInvFull = false;
+                amountText.text = this.amount.ToString();
+                if (this.amount <= 0)
+                {
+                    EmplySlot();
+                }
+            }
         }
-        _inventoryManager.DeselectSlots();
-        selectedShader.SetActive(true);
-        isItemSelected = true;
-        itemDescriptionNameText.text = itemName;
-        itemDescriptionText.text = itemDescription;
-        itemDescriptionImage.sprite = itemSprite;
-
-        if (itemDescriptionImage == null)
+        else
         {
-            itemDescriptionImage.sprite = emptySprite;
+            _inventoryManager.DeselectSlots();
+            selectedShader.SetActive(true);
+            isItemSelected = true;
+            itemDescriptionNameText.text = itemName;
+            itemDescriptionText.text = itemDescription;
+            itemDescriptionImage.sprite = itemSprite;
+
+            if (itemDescriptionImage == null)
+            {
+                itemDescriptionImage.sprite = emptySprite;
+            }
         }
     }
+
+    private void EmplySlot()
+    {
+        amountText.enabled = false;
+        itemImage.sprite = emptySprite;
+        itemDescription = "";
+        itemName = "";
+        
+        itemDescriptionNameText.text = "";
+        itemDescriptionText.text = "";
+        itemDescriptionImage.sprite = emptySprite;
+    }
+
     private void OnRightClick()
     {
         selectedShader.SetActive(false);

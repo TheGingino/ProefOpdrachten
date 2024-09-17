@@ -12,4 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d4cc3d70541a1843ac10d36e5240f6d, type: 3}
   m_Name: Stift
   m_EditorClassIdentifier: 
-  itemName: 
+  itemName: Stift
+  sprite: {fileID: 0}
+  amount: 0
+  itemDescription: balls
+  statToChange: 1
+  statAmount: 1
+  powerUp: 3
+  powerUpAmount: 1

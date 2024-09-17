@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public enum StatToChange
 {
-    none,
+    None,
     Health,
     Mana,
     Weapon
@@ -12,7 +10,7 @@ public enum StatToChange
 
 public enum PowerToChange
 {
-    none,
+    None,
     Strenght,
     Speed,
     Health
@@ -23,24 +21,32 @@ public class ItemSO : ScriptableObject
 {
     public string itemName;
     
+    public Sprite sprite;
+    public int amount;
+    
+    public string itemDescription;
+    
     public StatToChange statToChange;
     public string statAmount;
     
     public PowerToChange powerUp;
     public string powerUpAmount;
 
-    public void Useitem()
+    public bool Useitem()
     {
         switch (statToChange)
         {   
             case StatToChange.Health:
                 Debug.Log("Je krijgt hp terug of er komt meer?");
-                break;
+                return true;
             case StatToChange.Mana:
                 Debug.Log("Hier komt een boost");
                 break;
             default:
                 break;
         }
+
+        return false;
     }
+    
 }

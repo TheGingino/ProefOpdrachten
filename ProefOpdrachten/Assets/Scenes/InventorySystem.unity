@@ -1252,14 +1252,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item
       objectReference: {fileID: 0}
-    - target: {fileID: 1477141142773783441, guid: f44a5ccca06fb8343865151b10edd5a2, type: 3}
-      propertyPath: amount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1477141142773783441, guid: f44a5ccca06fb8343865151b10edd5a2, type: 3}
-      propertyPath: itemDescription
-      value: Deze stift is niet gemaakt om mee te stiften maar om te lijmen
-      objectReference: {fileID: 0}
     - target: {fileID: 5769255080006457056, guid: f44a5ccca06fb8343865151b10edd5a2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.32
@@ -10803,7 +10795,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1685360929}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1685360929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11911,6 +11915,8 @@ MonoBehaviour:
   - {fileID: 458747615}
   - {fileID: 541636851}
   - {fileID: 475439375}
+  itemSOs:
+  - {fileID: 11400000, guid: 294a01314a5d1774dac8da80a3adb2ad, type: 2}
 --- !u!1001 &1989564460
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12537,6 +12543,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5606424363120458069, guid: 5c446dca9c85cf74db3cd9223935634e, type: 3}
+      propertyPath: emptySprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c06326761fd7f414586b40520951cb09, type: 3}
     - target: {fileID: 5606424363120458069, guid: 5c446dca9c85cf74db3cd9223935634e, type: 3}
       propertyPath: itemDescriptionText
       value: 

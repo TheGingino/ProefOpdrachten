@@ -6,16 +6,18 @@ public class InventoryManager : MonoBehaviour
     public ItemSlot[] itemSlot;
     public ItemSO[] itemSOs;
 
-    public void UseItem(string itemName)
+    public bool UseItem(string itemName)
     {
         for (int i = 0; i < itemSOs.Length; i++)
         {
             if (itemSOs[i].itemName == itemName)
             {
-                itemSOs[i].Useitem();
+                bool isUsable = itemSOs[i].Useitem();
                 Debug.Log("Hier gebeurt iets");
+                return isUsable;
             }
         }
+        return false;
     }
     
     public int AddItem(string itemName, int amount, Sprite itemSprite, string itemDescription)
