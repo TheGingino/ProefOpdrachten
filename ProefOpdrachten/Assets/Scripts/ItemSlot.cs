@@ -5,14 +5,27 @@ using UnityEngine.UI;
 
 public class ItemSlot : MonoBehaviour, IPointerClickHandler  
 {
+    [Header("Item Data")]
     public string itemName;
-    [SerializeField]private int amount;
-    [SerializeField]private Sprite sprite;
+    public int amount;
+    [SerializeField]private Sprite itemSprite;
     public bool isInvFull;
+    public string itemDescription;
+    public Sprite emptySprite;
 
+    [SerializeField]private int maxNumberOfItems;
+    
+    [Header("Item Slot")]
     [SerializeField] private TextMeshProUGUI amountText;
 
     [SerializeField] private Image itemImage;
+
+    [Header("Item Description")]
+    [SerializeField] private Image itemDescriptionImage;
+
+    [SerializeField] private TextMeshProUGUI itemDescriptionNameText;
+    
+    [SerializeField] private TextMeshProUGUI itemDescriptionText;
 
     public GameObject selectedShader;
 
@@ -26,17 +39,33 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         _inventoryManager = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>();
     }
 
-    public void AddItem(string itemName, int itemAmount, Sprite itemSprite)
+    public int AddItem(string itemName, int itemAmount, Sprite itemSprite, string itemDescription)
     {
+
+        if (isInvFull)
+        {
+            return amount;
+        }
+        //Update those
         this.itemName = itemName;
-        this.sprite = itemSprite;
-        this.amount = itemAmount;
-        isInvFull = true;
-
-        amountText.text = amount.ToString();
+        this.itemSprite = itemSprite;
+        itemImage.sprite = itemSprite;
+        this.itemDescription = itemDescription;
+        
+        this.amount += itemAmount;
+        if (this.amount >= maxNumberOfItems)
+        {
+            amountText.text = maxNumberOfItems.ToString();
+            amountText.enabled = true;
+            isInvFull = true;
+            
+            int extraItems = this.amount - maxNumberOfItems;
+            this.amount = maxNumberOfItems;
+            return extraItems;
+        }
+        amountText.text = this.amount.ToString();
         amountText.enabled = true;
-        itemImage.sprite = sprite;
-
+        return 0;
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -54,9 +83,23 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
 
     private void OnLeftClick()
     {
+        //ik verplaats dit om het in een button script te gooien,
+        //omdat ik niet wil dat je moet dubbel klikken
+        if (isItemSelected)
+        {
+            _inventoryManager.UseItem(itemName);
+        }
         _inventoryManager.DeselectSlots();
         selectedShader.SetActive(true);
         isItemSelected = true;
+        itemDescriptionNameText.text = itemName;
+        itemDescriptionText.text = itemDescription;
+        itemDescriptionImage.sprite = itemSprite;
+
+        if (itemDescriptionImage == null)
+        {
+            itemDescriptionImage.sprite = emptySprite;
+        }
     }
     private void OnRightClick()
     {

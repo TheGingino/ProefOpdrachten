@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -50, y: 16.9}
-  m_SizeDelta: {x: 100, y: 33.8}
+  m_AnchoredPosition: {x: -21.7, y: 18.7}
+  m_SizeDelta: {x: 40.4231, y: 33.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5855780818953235963
 CanvasRenderer:
@@ -52,7 +52,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 512670511528571026}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -65,7 +65,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 00
+  m_text: '00
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -192,14 +194,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 978f2ada4f2e9144db19e841c5a0b446, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c06326761fd7f414586b40520951cb09, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -302,10 +304,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: 
   amount: 0
-  sprite: {fileID: 0}
+  itemSprite: {fileID: 21300000, guid: c06326761fd7f414586b40520951cb09, type: 3}
   isInvFull: 0
+  itemDescription: 
+  emptySprite: {fileID: 0}
+  maxNumberOfItems: 10
   amountText: {fileID: 4273362456664902724}
   itemImage: {fileID: 9098835781903185171}
+  itemDescriptionImage: {fileID: 0}
+  itemDescriptionNameText: {fileID: 0}
+  itemDescriptionText: {fileID: 0}
   selectedShader: {fileID: 4056720588642713800}
   isItemSelected: 0
 --- !u!1 &4056720588642713800
@@ -325,7 +333,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5940024530015269630
 RectTransform:
   m_ObjectHideFlags: 0
