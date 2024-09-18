@@ -3,66 +3,59 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ItemSlot : MonoBehaviour, IPointerClickHandler  
+public class ItemSlot : MonoBehaviour, IPointerClickHandler
 {
     [Header("Item Data")]
-    public string itemName;
-    public int amount;
-    [SerializeField]private Sprite itemSprite;
+    public ItemSO currentItem; // Gebruik het ItemSO
+    public int amount;  // Aantal items in het slot
     public bool isInvFull;
-    public string itemDescription;
     public Sprite emptySprite;
 
-    [SerializeField]private int maxNumberOfItems;
-    
+    [SerializeField] private int maxNumberOfItems;
+
     [Header("Item Slot")]
     [SerializeField] private TextMeshProUGUI amountText;
-
     [SerializeField] private Image itemImage;
 
     [Header("Item Description")]
     [SerializeField] private Image itemDescriptionImage;
-
     [SerializeField] private TextMeshProUGUI itemDescriptionNameText;
-    
     [SerializeField] private TextMeshProUGUI itemDescriptionText;
 
     public GameObject selectedShader;
-
     public bool isItemSelected;
 
     private InventoryManager _inventoryManager;
-
 
     private void Start()
     {
         _inventoryManager = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>();
     }
 
-    public int AddItem(string itemName, int itemAmount, Sprite itemSprite, string itemDescription)
+    public int AddItem(ItemSO itemSO, int itemAmount)
     {
-
         if (isInvFull)
         {
             return amount;
         }
-        //Update those
-        this.itemName = itemName;
-        this.itemSprite = itemSprite;
-        itemImage.sprite = itemSprite;
-        this.itemDescription = itemDescription;
-        
+
+        // Update het item slot met ItemSO gegevens
+        this.currentItem = itemSO;
+        itemImage.sprite = itemSO.itemSprite;
         this.amount += itemAmount;
+
+        // Update de hoeveelheid
         if (this.amount >= maxNumberOfItems)
         {
             amountText.text = maxNumberOfItems.ToString();
             amountText.enabled = true;
             isInvFull = true;
-            
+
             int extraItems = this.amount - maxNumberOfItems;
             this.amount = maxNumberOfItems;
             return extraItems;
         }
+
         amountText.text = this.amount.ToString();
         amountText.enabled = true;
         return 0;
@@ -83,11 +76,16 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
 
     private void OnLeftClick()
     {
-        //ik verplaats dit om het in een button script te gooien,
-        //omdat ik niet wil dat je moet dubbel klikken
+        // Check of er een item aanwezig is
+        if (currentItem == null)
+        {
+            Debug.Log("Geen item in dit slot.");
+            return;  // Geen item om mee te werken
+        }
+
         if (isItemSelected)
         {
-            bool isUsable =  _inventoryManager.UseItem(itemName);
+            bool isUsable = _inventoryManager.UseItem(currentItem); // Gebruik het item op basis van ItemSO
             if (isUsable)
             {
                 this.amount -= 1;
@@ -95,7 +93,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
                 amountText.text = this.amount.ToString();
                 if (this.amount <= 0)
                 {
-                    EmplySlot();
+                    EmptySlot();
                 }
             }
         }
@@ -104,24 +102,21 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
             _inventoryManager.DeselectSlots();
             selectedShader.SetActive(true);
             isItemSelected = true;
-            itemDescriptionNameText.text = itemName;
-            itemDescriptionText.text = itemDescription;
-            itemDescriptionImage.sprite = itemSprite;
 
-            if (itemDescriptionImage == null)
-            {
-                itemDescriptionImage.sprite = emptySprite;
-            }
+            // Update de item beschrijving UI
+            itemDescriptionNameText.text = currentItem.itemName;
+            itemDescriptionText.text = currentItem.itemDescription;
+            itemDescriptionImage.sprite = currentItem.itemSprite;
         }
     }
 
-    private void EmplySlot()
+    private void EmptySlot()
     {
+        // Reset het slot naar een lege staat
         amountText.enabled = false;
         itemImage.sprite = emptySprite;
-        itemDescription = "";
-        itemName = "";
-        
+        currentItem = null;
+
         itemDescriptionNameText.text = "";
         itemDescriptionText.text = "";
         itemDescriptionImage.sprite = emptySprite;
@@ -132,5 +127,4 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         selectedShader.SetActive(false);
         isItemSelected = false;
     }
-    
 }

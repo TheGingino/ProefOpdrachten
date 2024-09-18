@@ -21,7 +21,7 @@ public class ItemSO : ScriptableObject
 {
     public string itemName;
     
-    public Sprite sprite;
+    public Sprite itemSprite;
     public int amount;
     
     public string itemDescription;
@@ -32,7 +32,7 @@ public class ItemSO : ScriptableObject
     public PowerToChange powerUp;
     public string powerUpAmount;
 
-    public bool Useitem()
+    public bool UseItem()
     {
         switch (statToChange)
         {   

@@ -1252,6 +1252,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item
       objectReference: {fileID: 0}
+    - target: {fileID: 1477141142773783441, guid: f44a5ccca06fb8343865151b10edd5a2, type: 3}
+      propertyPath: itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 294a01314a5d1774dac8da80a3adb2ad, type: 2}
+    - target: {fileID: 1844652281683726527, guid: f44a5ccca06fb8343865151b10edd5a2, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5769255080006457056, guid: f44a5ccca06fb8343865151b10edd5a2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.32
@@ -11794,7 +11802,7 @@ GameObject:
   - component: {fileID: 1974903473}
   m_Layer: 5
   m_Name: InventoryCanvas
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11894,7 +11902,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 819c9e51bd583564a9c1ee8cd5b4f30b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemSlot:
+  itemSlots:
   - {fileID: 1508304649}
   - {fileID: 994378030}
   - {fileID: 2073888919}
@@ -11915,8 +11923,6 @@ MonoBehaviour:
   - {fileID: 458747615}
   - {fileID: 541636851}
   - {fileID: 475439375}
-  itemSOs:
-  - {fileID: 11400000, guid: 294a01314a5d1774dac8da80a3adb2ad, type: 2}
 --- !u!1001 &1989564460
 PrefabInstance:
   m_ObjectHideFlags: 0

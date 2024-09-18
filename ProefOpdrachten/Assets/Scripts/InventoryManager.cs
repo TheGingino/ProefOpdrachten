@@ -2,48 +2,44 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
+    public ItemSlot[] itemSlots; // De verschillende slots in de inventory
 
-    public ItemSlot[] itemSlot;
-    public ItemSO[] itemSOs;
-
-    public bool UseItem(string itemName)
+    public bool UseItem(ItemSO itemSO) // Nu gebaseerd op ItemSO
     {
-        for (int i = 0; i < itemSOs.Length; i++)
+        if (itemSO != null)
         {
-            if (itemSOs[i].itemName == itemName)
-            {
-                bool isUsable = itemSOs[i].Useitem();
-                Debug.Log("Hier gebeurt iets");
-                return isUsable;
-            }
+            return itemSO.UseItem(); // Gebruik het item via het ScriptableObject
         }
+
+        Debug.Log("Er is geen item om te gebruiken.");
         return false;
     }
-    
-    public int AddItem(string itemName, int amount, Sprite itemSprite, string itemDescription)
+
+    public int AddItem(ItemSO itemSO, int amount)
     {
-        for (int i = 0; i < itemSlot.Length; i++)
+        for (int i = 0; i < itemSlots.Length; i++)
         {
-            if (!itemSlot[i].isInvFull && itemSlot[i].itemName == itemName || itemSlot[i].amount == 0)
+            if (!itemSlots[i].isInvFull && (itemSlots[i].currentItem == null || itemSlots[i].currentItem == itemSO))
             {
-                int leftOverItems = itemSlot[i].AddItem(itemName,amount,itemSprite, itemDescription);
+                int leftOverItems = itemSlots[i].AddItem(itemSO, amount);
                 if (leftOverItems > 0)
                 {
-                    leftOverItems = AddItem(itemName, leftOverItems, itemSprite, itemDescription);
+                    return AddItem(itemSO, leftOverItems); // Als er teveel zijn, herhaal
                 }
-                return leftOverItems;
+                return 0;
             }
         }
-        return amount;
+
+        Debug.Log("Inventory is vol!");
+        return amount; // Als het niet past, return de niet toegevoegde items
     }
 
     public void DeselectSlots()
     {
-        for (int i = 0; i < itemSlot.Length; i++)
+        for (int i = 0; i < itemSlots.Length; i++)
         {
-            itemSlot[i].selectedShader.SetActive(false);
-            itemSlot[i].isItemSelected = false;
+            itemSlots[i].selectedShader.SetActive(false);
+            itemSlots[i].isItemSelected = false;
         }
     }
-    
 }

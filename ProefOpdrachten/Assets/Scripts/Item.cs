@@ -2,13 +2,9 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    [SerializeField] private string itemName;
-    [SerializeField] private Sprite sprite;
-    [SerializeField] private int amount;
-    
-    [TextArea]
-    [SerializeField] private string itemDescription;
-    
+    public ItemSO itemData;  // Het ScriptableObject voor dit specifieke item
+    public int amount = 1;
+
     private InventoryManager inventoryManager;
 
     private void Start()
@@ -16,18 +12,19 @@ public class Item : MonoBehaviour
         inventoryManager = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.CompareTag("Player"))
         {
-            int leftOverItems = inventoryManager.AddItem(itemName, amount, sprite, itemDescription);
+            int leftOverItems = inventoryManager.AddItem(itemData, amount);  // Voeg het item toe aan de inventaris
             if (leftOverItems <= 0)
             {
-                Destroy(gameObject);
+                Destroy(gameObject);  // Verwijder het item uit de wereld als alles is toegevoegd
             }
             else
             {
-                amount = leftOverItems;
+                amount = leftOverItems;  // Anders wordt de hoeveelheid bijgewerkt
+                Destroy(gameObject);
             }
         }
     }
