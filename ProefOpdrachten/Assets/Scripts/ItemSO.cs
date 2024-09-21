@@ -41,7 +41,10 @@ public class ItemSO : ScriptableObject
                 return true;
             case StatToChange.Mana:
                 Debug.Log("Hier komt een boost");
-                break;
+                return true;
+            case StatToChange.Weapon:
+                return true;
+            
             default:
                 break;
         }

@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class OpenInventory : MonoBehaviour
 {
     [SerializeField] private GameObject inventoryUI;
+    public UnityEvent openEvent;
     bool isInvOpen = true;
 
     private void Update()
@@ -11,7 +13,7 @@ public class OpenInventory : MonoBehaviour
         {
             if (!isInvOpen)
             {
-                TurnOn();
+                openEvent.Invoke();
                 isInvOpen = true;
             }
             else
