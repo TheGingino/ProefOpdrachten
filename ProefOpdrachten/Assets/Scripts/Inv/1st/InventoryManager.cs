@@ -85,6 +85,10 @@ public class InventoryManager : MonoBehaviour
                 itemSlots[i].itemImage.sprite = sortedSlots[i].currentItem.itemSprite;
                 itemSlots[i].amountText.text = sortedSlots[i].amount.ToString();
                 itemSlots[i].amountText.enabled = true;
+                itemSlots[i].itemDescriptionNameText = sortedSlots[i].itemDescriptionNameText;
+                itemSlots[i].itemDescriptionText = sortedSlots[i].itemDescriptionText;
+                itemSlots[i].itemDescriptionImage = sortedSlots[i].itemDescriptionImage;
+
             }
             else
             {

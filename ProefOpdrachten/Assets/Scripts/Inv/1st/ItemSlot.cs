@@ -19,9 +19,9 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
     [SerializeField] public Image itemImage;
 
     [Header("Item Description")]
-    [SerializeField] private Image itemDescriptionImage;
-    [SerializeField] private TextMeshProUGUI itemDescriptionNameText;
-    [SerializeField] private TextMeshProUGUI itemDescriptionText;
+    public Image itemDescriptionImage;
+    public TextMeshProUGUI itemDescriptionNameText;
+    public TextMeshProUGUI itemDescriptionText;
 
     public GameObject selectedShader;
     public bool isItemSelected;

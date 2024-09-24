@@ -7,6 +7,7 @@ public class InventoryUI : MonoBehaviour
 {
     public Button sortByNameButton;
     public Button sortByStatButton;
+    [SerializeField] private Button[] ItemDecision;
     public InventoryManager inventoryManager;
 
     private void Start()
