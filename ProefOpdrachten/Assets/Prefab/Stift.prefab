@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5769255080006457056}
   - component: {fileID: 6649844646753755604}
   - component: {fileID: 1844652281683726527}
-  - component: {fileID: 1477141142773783441}
   m_Layer: 0
   m_Name: Stift
   m_TagString: Untagged
@@ -107,20 +106,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1477141142773783441
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 476968648350539683}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40547dc5804e12d41b4f9309ab52971e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemData: {fileID: 0}
-  amount: 1
 --- !u!1 &6900286463383782421
 GameObject:
   m_ObjectHideFlags: 0

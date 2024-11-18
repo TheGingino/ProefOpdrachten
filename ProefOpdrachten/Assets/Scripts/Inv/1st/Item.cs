@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Item : MonoBehaviour
 {
     public ItemSO itemData;  // Het ScriptableObject voor dit specifieke item
     public int amount = 1;
+    public Sprite icon;
 
     private InventoryManager inventoryManager;
 

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InventoryUI : MonoBehaviour
+public class InventoryUI1 : MonoBehaviour
 {
     public Button sortByNameButton;
     public Button sortByStatButton;
-    [SerializeField] private Button[] ItemDecision;
+    [SerializeField] private Button[] itemDecision;
     public InventoryManager inventoryManager;
 
     private void Start()

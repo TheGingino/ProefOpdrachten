@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d4cc3d70541a1843ac10d36e5240f6d, type: 3}
-  m_Name: Barf
+  m_Name: Check
   m_EditorClassIdentifier: 
-  itemName: Bart
-  itemSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  itemName: Checkmarkj
+  itemSprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
   amount: 1
-  itemDescription: This item should'nt exist
-  statToChange: 1
-  statAmount: 0
-  powerUp: 2
-  powerUpAmount: 0
+  itemDescription: This is an item which really only serves as a testing item
+  statToChange: 3
+  statAmount: 1
+  powerUp: 1
+  powerUpAmount: 1

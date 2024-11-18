@@ -13,7 +13,7 @@ public class OpenInventory : MonoBehaviour
         {
             if (!isInvOpen)
             {
-                openEvent.Invoke();
+                TurnOn();
                 isInvOpen = true;
             }
             else
