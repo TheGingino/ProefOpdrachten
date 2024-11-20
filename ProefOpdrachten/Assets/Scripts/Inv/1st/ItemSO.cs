@@ -48,7 +48,6 @@ public class ItemSO : ScriptableObject
             default:
                 break;
         }
-
         return false;
     }
     
