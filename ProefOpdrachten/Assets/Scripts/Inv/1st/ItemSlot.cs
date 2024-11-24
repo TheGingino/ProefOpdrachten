@@ -14,9 +14,8 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
     [SerializeField] private int maxNumberOfItems;
 
     [Header("Item Slot")]
-    [SerializeField]
     public TextMeshProUGUI amountText;
-    [SerializeField] public Image itemImage;
+    public Image itemImage;
 
     [Header("Item Description")]
     public Image itemDescriptionImage;

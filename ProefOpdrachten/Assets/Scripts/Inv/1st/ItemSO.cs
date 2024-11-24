@@ -8,13 +8,6 @@ public enum StatToChange
     Weapon
 }
 
-public enum PowerToChange
-{
-    None,
-    Strenght,
-    Speed,
-    Health
-}
 
 [CreateAssetMenu(menuName = "Items")]
 public class ItemSO : ScriptableObject
@@ -28,9 +21,6 @@ public class ItemSO : ScriptableObject
     
     public StatToChange statToChange;
     public string statAmount;
-    
-    public PowerToChange powerUp;
-    public string powerUpAmount;
 
     public bool UseItem()
     {

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -50,19 +51,16 @@ public class InventoryManager : MonoBehaviour
         List<ItemSlot> sortedSlots = new List<ItemSlot>(itemSlots);
         sortedSlots.Sort((slot1, slot2) =>
         {
-            if (slot1.currentItem == null) return 1; // Plaats lege slots onderaan
+            if (slot1.currentItem == null) return 1;
             if (slot2.currentItem == null) return -1;
             return slot1.currentItem.itemName.CompareTo(slot2.currentItem.itemName);
         });
 
-        // Update de UI na sorteren
         UpdateInventoryUI(sortedSlots);
     }
 
-    // Nieuwe functie om items te sorteren op StatToChange
     public void SortInventoryByStat()
     {
-        // Sorteer slots op de stat die het item verandert
         List<ItemSlot> sortedSlots = new List<ItemSlot>(itemSlots);
         sortedSlots.Sort((slot1, slot2) =>
         {
@@ -71,11 +69,9 @@ public class InventoryManager : MonoBehaviour
             return slot1.currentItem.statToChange.CompareTo(slot2.currentItem.statToChange);
         });
 
-        // Update de UI na sorteren
         UpdateInventoryUI(sortedSlots);
     }
 
-    // Update de UI slots met gesorteerde slots
     private void UpdateInventoryUI(List<ItemSlot> sortedSlots)
     {
         for (int i = 0; i < sortedSlots.Count; i++)
@@ -92,7 +88,7 @@ public class InventoryManager : MonoBehaviour
             }
             else
             {
-                itemSlots[i].itemImage.sprite = itemSlots[i].emptySprite; // Leeg slot
+                itemSlots[i].itemImage.sprite = itemSlots[i].emptySprite;
                 itemSlots[i].amountText.enabled = false;
             }
         }
