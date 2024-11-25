@@ -4,9 +4,10 @@ using UnityEngine.Events;
 public class OpenInventory : MonoBehaviour
 {
     [SerializeField] private GameObject inventoryUI;
-    public UnityEvent openEvent;
+    [SerializeField] private UnityEvent openEvent;
     bool isInvOpen = true;
 
+    
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
