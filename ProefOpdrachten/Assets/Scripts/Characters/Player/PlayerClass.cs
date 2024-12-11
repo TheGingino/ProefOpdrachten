@@ -18,7 +18,10 @@ public class PlayerClass : CharacterClass
     // Update is called once per frame
     void Update()
     {
-
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
     }
     
     
@@ -30,5 +33,10 @@ public class PlayerClass : CharacterClass
             TakeDamage(1);
         }
     }
-    
+     
+    public void Die()
+    {
+        Debug.Log("Speler is gestorven!");
+        CheckPointManager.Instance.RespawnPlayer(this.gameObject);
+    }
 }
