@@ -6,6 +6,7 @@ using UnityEngine.Events;
 
 public class PlayerClass : CharacterClass
 {
+    public int damage = 2;
     private UnityEvent takeDamage;
 
     // Start is called before the first frame update

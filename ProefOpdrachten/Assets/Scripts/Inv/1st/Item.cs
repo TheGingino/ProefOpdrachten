@@ -3,7 +3,7 @@ using UnityEngine.UIElements;
 
 public class Item : MonoBehaviour
 {
-    public ItemSO itemData;  // Het ScriptableObject voor dit specifieke item
+    public ItemSO itemData;  
     public int amount = 1;
     public Sprite icon;
 
@@ -18,14 +18,14 @@ public class Item : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            int leftOverItems = inventoryManager.AddItem(itemData, amount);  // Voeg het item toe aan de inventaris
+            int leftOverItems = inventoryManager.AddItem(itemData, amount);  
             if (leftOverItems <= 0)
             {
-                Destroy(gameObject);  // Verwijder het item uit de wereld als alles is toegevoegd
+                Destroy(gameObject); 
             }
             else
             {
-                amount = leftOverItems;  // Anders wordt de hoeveelheid bijgewerkt
+                amount = leftOverItems;  
                 Destroy(gameObject);
             }
         }

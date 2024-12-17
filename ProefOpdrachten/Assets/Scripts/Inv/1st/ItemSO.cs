@@ -13,12 +13,9 @@ public enum StatToChange
 public class ItemSO : ScriptableObject
 {
     public string itemName;
-    
     public Sprite itemSprite;
     public int amount;
-    
     public string itemDescription;
-    
     public StatToChange statToChange;
     public string statAmount;
 
@@ -34,11 +31,9 @@ public class ItemSO : ScriptableObject
                 return true;
             case StatToChange.Weapon:
                 return true;
-            
             default:
                 break;
         }
         return false;
     }
-    
 }

@@ -12,11 +12,10 @@ public class InventoryUI1 : MonoBehaviour
     public InventoryManager inventoryManager;
 
     [SerializeField] private GameObject sortButtons, sortButton;
-    private bool isSortOpen;
+    private bool isSortOpen = false;
 
     private void Start()
     {
-        isSortOpen = false;
         sortByNameButton.onClick.AddListener(inventoryManager.SortInventoryByName);
         sortByStatButton.onClick.AddListener(inventoryManager.SortInventoryByStat);
         

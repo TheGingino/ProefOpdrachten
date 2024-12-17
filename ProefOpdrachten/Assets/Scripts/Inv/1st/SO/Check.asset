@@ -10,13 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d4cc3d70541a1843ac10d36e5240f6d, type: 3}
-  m_Name: Stift
+  m_Name: Check
   m_EditorClassIdentifier: 
-  itemName: Stift
-  itemSprite: {fileID: 21300000, guid: 978f2ada4f2e9144db19e841c5a0b446, type: 3}
+  itemName: Checkmarkj
+  itemSprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
   amount: 1
-  itemDescription: balls
-  statToChange: 1
+  itemDescription: This is an item which really only serves as a testing item
+  statToChange: 0
   statAmount: 1
-  powerUp: 2
-  powerUpAmount: 1

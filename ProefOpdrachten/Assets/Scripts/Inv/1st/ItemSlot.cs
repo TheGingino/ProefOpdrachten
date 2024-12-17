@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class ItemSlot : MonoBehaviour, IPointerClickHandler
 {
     [Header("Item Data")]
-    public ItemSO currentItem; // Gebruik het ItemSO
-    public int amount;  // Aantal items in het slot
+    public ItemSO currentItem; 
+    public int amount;  
     public bool isInvFull;
     public Sprite emptySprite;
 
@@ -39,12 +39,10 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
             return amount;
         }
 
-        // Update het item slot met ItemSO gegevens
         this.currentItem = itemSO;
         itemImage.sprite = itemSO.itemSprite;
         this.amount += itemAmount;
 
-        // Update de hoeveelheid
         if (this.amount >= maxNumberOfItems)
         {
             amountText.text = maxNumberOfItems.ToString();
@@ -76,16 +74,15 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
 
     private void OnLeftClick()
     {
-        // Check of er een item aanwezig is
         if (currentItem == null)
         {
             Debug.Log("Geen item in dit slot.");
-            return;  // Geen item om mee te werken
+            return;  
         }
 
         if (isItemSelected)
         {
-            bool isUsable = _inventoryManager.UseItem(currentItem); // Gebruik het item op basis van ItemSO
+            bool isUsable = _inventoryManager.UseItem(currentItem); 
             if (isUsable)
             {
                 this.amount -= 1;
@@ -103,7 +100,6 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
             selectedShader.SetActive(true);
             isItemSelected = true;
 
-            // Update de item beschrijving UI
             itemDescriptionNameText.text = currentItem.itemName;
             itemDescriptionText.text = currentItem.itemDescription;
             itemDescriptionImage.sprite = currentItem.itemSprite;
@@ -112,7 +108,6 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
 
     private void EmptySlot()
     {
-        // Reset het slot naar een lege staat
         amountText.enabled = false;
         itemImage.sprite = emptySprite;
         currentItem = null;

@@ -4,17 +4,15 @@ using UnityEngine;
 
 public class CheckPointManager : MonoBehaviour
 {
-    public static CheckPointManager Instance; // Singleton for easy access
+    public static CheckPointManager Instance;
 
     private Vector3 currentCheckpoint;
 
     private void Awake()
     {
-        // Singleton patroon om ervoor te zorgen dat er maar één GameManager is.
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else
         {

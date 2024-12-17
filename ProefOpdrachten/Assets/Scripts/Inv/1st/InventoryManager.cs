@@ -4,13 +4,17 @@ using UnityEngine.Events;
 
 public class InventoryManager : MonoBehaviour
 {
-    public ItemSlot[] itemSlots; // De verschillende slots in de inventory
+    public ItemSlot[] itemSlots; 
 
-    public bool UseItem(ItemSO itemSO) // Nu gebaseerd op ItemSO
+    public bool UseItem(ItemSO itemSO) 
     {
         if (itemSO != null)
         {
-            return itemSO.UseItem(); // Gebruik het item via het ScriptableObject
+            return itemSO.UseItem();
+        }
+        else
+        {
+            DeselectSlots();
         }
 
         Debug.Log("Er is geen item om te gebruiken.");
@@ -26,14 +30,12 @@ public class InventoryManager : MonoBehaviour
                 int leftOverItems = itemSlots[i].AddItem(itemSO, amount);
                 if (leftOverItems > 0)
                 {
-                    return AddItem(itemSO, leftOverItems); // Als er teveel zijn, herhaal
+                    return AddItem(itemSO, leftOverItems); 
                 }
                 return 0;
             }
         }
-
-        Debug.Log("Inventory is vol!");
-        return amount; // Als het niet past, return de niet toegevoegde items
+        return amount; 
     }
 
     public void DeselectSlots()
@@ -47,7 +49,6 @@ public class InventoryManager : MonoBehaviour
     
     public void SortInventoryByName()
     {
-        // Sorteer slots op itemName
         List<ItemSlot> sortedSlots = new List<ItemSlot>(itemSlots);
         sortedSlots.Sort((slot1, slot2) =>
         {
@@ -55,7 +56,7 @@ public class InventoryManager : MonoBehaviour
             if (slot2.currentItem == null) return -1;
             return slot1.currentItem.itemName.CompareTo(slot2.currentItem.itemName);
         });
-
+        
         UpdateInventoryUI(sortedSlots);
     }
 
@@ -90,6 +91,10 @@ public class InventoryManager : MonoBehaviour
             {
                 itemSlots[i].itemImage.sprite = itemSlots[i].emptySprite;
                 itemSlots[i].amountText.enabled = false;
+                
+                itemSlots[i].itemDescriptionNameText.text = string.Empty;
+                itemSlots[i].itemDescriptionText.text = string.Empty;
+                itemSlots[i].itemDescriptionImage.sprite = null;
             }
         }
     }
